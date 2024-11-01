@@ -17,11 +17,10 @@ steps:
     entrypoint: gcloud
     args:
       [
-        'run', 'deploy', 'contactapp-service',  # Cloud Run service name
         '--image', 'gcr.io/$PROJECT_ID/github.com/farfromavocaido/$REPO_NAME:$COMMIT_SHA',
         '--platform', 'managed',
         '--region', 'europe-west1',  # Updated region
-        '--port', '8000',
+        '--port', '8080',
         '--allow-unauthenticated'
       ]
 
@@ -30,4 +29,4 @@ images:
   - 'gcr.io/$PROJECT_ID/github.com/farfromavocaido/$REPO_NAME:$COMMIT_SHA'
 
 options:
-  logging: CLOUD_LOGGING_ONLY  # Set logging behavior
+  logging: CLOUD_LOGGING_ONLY  # Set logging behaviorg
