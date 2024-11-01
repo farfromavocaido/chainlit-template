@@ -4,13 +4,13 @@ steps:
     args: [
       'build',
       '--platform=linux/amd64',
-      '-t', 'gcr.io/$PROJECT_ID/github.com/farfromavocaido/$REPO_NAME:$COMMIT_SHA',  # Your image tag
+      '-t', 'gcr.io/$PROJECT_ID/github.com/farfromavocaido/openai_qualevals:$COMMIT_SHA',  # Your image tag
       '.'
     ]
   
   # Step 2: Push the Docker image to Google Container Registry
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['push', 'gcr.io/$PROJECT_ID/github.com/farfromavocaido/$REPO_NAME:$COMMIT_SHA']
+    args: ['push', 'gcr.io/$PROJECT_ID/github.com/farfromavocaido/openai_qualevals:$COMMIT_SHA']
 
   # Step 3: Deploy the Docker image to Cloud Run
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
@@ -18,7 +18,7 @@ steps:
     args:
       [
         'run', 'deploy', 'contactapp-service',  # Cloud Run service name
-        '--image', 'gcr.io/$PROJECT_ID/github.com/farfromavocaido/$REPO_NAME:$COMMIT_SHA',
+        '--image', 'gcr.io/$PROJECT_ID/github.com/farfromavocaido/openai_qualevals:$COMMIT_SHA',
         '--platform', 'managed',
         '--region', 'europe-west1',  # Updated region
         '--port', '8000',
@@ -27,7 +27,7 @@ steps:
 
 # Specify the images to push after the build
 images:
-  - 'gcr.io/$PROJECT_ID/github.com/farfromavocaido/$REPO_NAME:$COMMIT_SHA'
+  - 'gcr.io/$PROJECT_ID/github.com/farfromavocaido/openai_qualevals:$COMMIT_SHA'
 
 options:
   logging: CLOUD_LOGGING_ONLY  # Set logging behavior
