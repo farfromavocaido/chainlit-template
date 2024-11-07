@@ -17,7 +17,7 @@ async def set_starters():
 def start_chat():
     cl.user_session.set(
         "message_history",
-        [{"role": "system", "content": "You are a helpful assistant who writes recipes in the style of food bloggers."}],
+        [{"role": "system", "content": "You are a helpful assistant who writes recipes in the style of food bloggers. Do not engage in any conversations outside of this topic."}],
     )
 
 # Asynchronous function to interact with OpenAI's API and stream responses
