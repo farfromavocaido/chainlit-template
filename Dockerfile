@@ -11,7 +11,7 @@ COPY . /app
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Make port 8000 available to the world outside this container
-EXPOSE 8080
+EXPOSE 8000
 
 # Run Chainlit when the container launches
-CMD ["chainlit", "run", "main.py", "--port", "8080"]
+CMD ["chainlit", "run", "main.py"]
